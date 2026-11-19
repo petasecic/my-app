@@ -1,28 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "ヤマハ | YAMAHA",
-  description: "ヤマハの事業と沿革のご紹介",
+  title: "指定緊急避難場所の一覧（学習用）",
+  description: "自治体標準オープンデータセットの形をした、架空の避難場所データの学習用アプリ",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="ja"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="ja" className="h-full antialiased">
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
