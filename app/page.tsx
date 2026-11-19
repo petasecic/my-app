@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const businesses = [
   {
     name: "楽器・音響機器",
@@ -33,6 +35,9 @@ export default function Home() {
             <a href="#history" className="hover:text-red-600">
               沿革
             </a>
+            <Link href="/about" className="hover:text-red-600">
+              会社概要
+            </Link>
           </nav>
         </div>
       </header>
