@@ -4,6 +4,8 @@
 import type { HazardKey } from "@/shared/hazards";
 import type {
   ApiErrorResponse,
+  HazardCount,
+  HazardCountListResponse,
   Shelter,
   ShelterDetailResponse,
   ShelterListResponse,
@@ -38,6 +40,12 @@ export async function fetchShelters(params: FetchSheltersParams = {}): Promise<S
   const response = await fetch(`/api/shelters${suffix}`);
   const body = await readJson<ShelterListResponse>(response);
   return body.shelters;
+}
+
+export async function fetchHazardCounts(): Promise<HazardCount[]> {
+  const response = await fetch("/api/hazards");
+  const body = await readJson<HazardCountListResponse>(response);
+  return body.hazards;
 }
 
 export async function fetchShelter(id: string): Promise<Shelter> {

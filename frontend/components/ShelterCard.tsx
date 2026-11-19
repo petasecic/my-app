@@ -12,9 +12,7 @@ export function ShelterCard({ shelter }: { shelter: Shelter }) {
         </Link>
       </h2>
       <p className="text-sm text-slate-600">{shelter.address}</p>
-      <p className="text-sm text-slate-700">
-        想定収容人数：{shelter.capacity.toLocaleString("ja-JP")}人
-      </p>
+      {shelter.note ? <p className="text-xs text-slate-500">備考：{shelter.note}</p> : null}
       <ul className="flex flex-wrap gap-1.5" aria-label="対応する災害">
         {shelter.hazards.map((hazard) => (
           <li key={hazard}>

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { fetchShelter } from "@/frontend/api/sheltersApi";
 import { Header } from "@/frontend/components/Header";
+import { DataNotice } from "@/frontend/components/DataNotice";
 import { HazardBadge } from "@/frontend/components/HazardBadge";
 import { ErrorMessage, LoadingMessage } from "@/frontend/components/StatusMessage";
 import type { Shelter } from "@/shared/types";
@@ -45,6 +46,7 @@ export function ShelterDetailView({ id }: { id: string }) {
           <ShelterDetail shelter={shelter} />
         )}
       </main>
+      <DataNotice />
     </>
   );
 }
@@ -52,12 +54,14 @@ export function ShelterDetailView({ id }: { id: string }) {
 function ShelterDetail({ shelter }: { shelter: Shelter }) {
   const osmUrl = `https://www.openstreetmap.org/?mlat=${shelter.lat}&mlon=${shelter.lng}#map=17/${shelter.lat}/${shelter.lng}`;
   const rows: { label: string; value: string }[] = [
-    { label: "名称（カナ）", value: shelter.nameKana },
+    { label: "共通ID", value: shelter.id },
     { label: "住所", value: shelter.address },
     { label: "緯度", value: String(shelter.lat) },
     { label: "経度", value: String(shelter.lng) },
-    { label: "想定収容人数", value: `${shelter.capacity.toLocaleString("ja-JP")}人` },
-    { label: "電話番号", value: shelter.phone ?? "未登録" },
+    {
+      label: "指定避難所と同じ住所か",
+      value: shelter.sameAddressAsEvacuationCenter ? "同じ" : "違う（または未登録）",
+    },
     { label: "備考", value: shelter.note ?? "なし" },
   ];
 

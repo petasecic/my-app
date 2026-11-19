@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "指定緊急避難場所の一覧（学習用）",
-  description: "自治体標準オープンデータセットの形をした、架空の避難場所データの学習用アプリ",
+  title: "静岡市の指定緊急避難場所（学習用）",
+  description: "国土地理院の指定緊急避難場所データ（静岡市）を地図と一覧で見る、学習用アプリ",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
